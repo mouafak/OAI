@@ -40,6 +40,7 @@ const typeText = (element , text) => {
 
       element.innerHTML += text.charAt(index)
       index++
+      chatContainer.scrollTop = chatContainer.scrollHeight
 
     }else{
 
@@ -122,6 +123,8 @@ const handlerSubmit = async (e) => {
 
   // Fetch data from OpenAi API
 
+  const url = "https://oai-mouafak.onrender.com"
+
   const request = {
     method : "POST",
     headers : {
@@ -131,7 +134,7 @@ const handlerSubmit = async (e) => {
     "body" : JSON.stringify({prompt : data.get('prompt')})
   }
 
-  const response = await fetch('http://localhost:5000' , request)
+  const response = await fetch(url , request)
 
   clearInterval(loadInterval)
 
